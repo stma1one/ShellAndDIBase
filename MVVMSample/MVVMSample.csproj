@@ -61,6 +61,7 @@
 	  <None Remove="Resources\Fonts\gadi-almog-regular-aaa.otf" />
 	  <None Remove="Resources\Fonts\MaterialSymbolsOutlined.ttf" />
 	  <None Remove="Resources\Images\chuky.jpg" />
+	  <None Remove="Resources\Images\default_image.png" />
 	  <None Remove="Resources\Images\puppet.jpeg" />
 	  <None Remove="Resources\Images\Puzzle.jpeg" />
 	  <None Remove="Resources\Images\ThinkGame.jpeg" />
@@ -75,6 +76,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\AddToyPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ToyDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ViewToysPage.xaml">

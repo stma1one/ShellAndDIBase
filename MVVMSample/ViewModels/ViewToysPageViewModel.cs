@@ -19,6 +19,12 @@ namespace MVVMSample.ViewModels
         private List<Toy> fullList;
         private bool isRefreshing;
 
+        #region נבחר מהרשימה
+
+        #endregion
+
+        #region בחירת אוסף פריטים מהרישמה
+        #endregion
 
 
         #endregion
@@ -89,6 +95,15 @@ namespace MVVMSample.ViewModels
         {
             get;private set;
         }
+
+        #region Navigation
+        //Shell Navigation Pass Arguments
+       
+
+        //Shell Navigation Pass Object
+       
+        #endregion
+
         #endregion
 
         #region Constructor
@@ -109,6 +124,13 @@ namespace MVVMSample.ViewModels
             FilterBelowPriceCommand = new Command(FilterBelow,()=>Price>0);
             RefreshCommand = new Command(Refresh);
             DeleteCommand = new Command<Toy>((t) => {if( toyService.DeleteToy(t))Refresh(); });
+
+            #region Navigation Commands
+            //Navigation with Parametes
+            
+            //Navigation With Object
+            
+            #endregion
 
             #region Commands By LINQ
             //FilterAbovePriceCommand = new Command(() => Toys = new ObservableCollection<Toy>(Toys.Where(t => t.Price > Price)));
@@ -172,8 +194,19 @@ namespace MVVMSample.ViewModels
             
 
         }
+        #region Navigation Methods
+        //Navigation with Object
+        private void GoToDetailsPage(Toy toy)
+        {
 
-        
+        }
+        //Navigation With Parameters
+        private void GotoWithArguments(Toy toy)
+        {
+
+        }
+        #endregion
+
         #endregion
 
 

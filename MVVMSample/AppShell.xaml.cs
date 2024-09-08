@@ -5,6 +5,10 @@
         public AppShell()
         {
             InitializeComponent();
+          
+            #region רישום מסכים פנימיים
+            
+            #endregion
         }
     }
 }

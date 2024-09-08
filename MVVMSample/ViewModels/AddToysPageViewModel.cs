@@ -1,4 +1,5 @@
-﻿using MVVMSample.Models;
+﻿using Android.Health.Connect;
+using MVVMSample.Models;
 using MVVMSample.Services;
 using System;
 using System.Collections.Generic;
@@ -216,7 +217,7 @@ namespace MVVMSample.ViewModels
         //הוספת צעצוע חדש
         private void AddnewToy(string name)
         {
-            newToy = new Toy() { Id = 1, Name = this.Name, Price = this.Price, Type = SelectedType };
+            newToy = new Toy() { Id = 1, Name = this.Name, Price = this.Price, Type = SelectedType,    Image="default_image.png" };
             if (name == "הוסף צעצוע")
                 newToy.IsSecondHand = false;
             else
@@ -225,9 +226,16 @@ namespace MVVMSample.ViewModels
                 newToy.Price = newToy.Price * 0.9;
             }
             if (toyService.AddToy(newToy))
+                #region שדה 
                 Message = "הצלחה כבירה";
             else
                 Message = "לא הצלחתי להוסיף צעצוע";
+            #endregion
+
+            #region הקפצת חלון
+            #endregion
+
+
 
 
 

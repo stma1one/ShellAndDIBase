@@ -7,7 +7,8 @@ namespace MVVMSample
         public App()
         {
             InitializeComponent();
-
+            //שינוי הצבעה ל 
+            //SHELL
             MainPage = new AddToyPage();
         }
     }

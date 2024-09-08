@@ -79,6 +79,7 @@
                             <!--  SwipeView.TopItems,SwipeView.RightItems,SwipeView.BottomItems  -->
                             <SwipeView.LeftItems>
                                 <SwipeItems>
+                                      <!--Binding .   : means pass the whole object as parameter -->
                                     <SwipeItem Command="{Binding DeleteCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:ViewToysPageViewModel}, Mode=FindAncestorBindingContext}}"
                                                CommandParameter="{Binding .}"
                                                Text="מחק"
@@ -86,6 +87,8 @@
                                         <SwipeItem.IconImageSource>
                                             <FontImageSource FontFamily="MaterialSymbols" Glyph="{x:Static helpers:IconFont.Delete}" />
                                         </SwipeItem.IconImageSource>
+                                        
+                                        <!--הוספת כפתורי ניווט-->
                                     </SwipeItem>
 
 

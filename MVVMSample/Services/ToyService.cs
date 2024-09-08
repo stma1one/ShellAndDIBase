@@ -105,7 +105,7 @@ interface IToys
 
         public List<Toy>? GetToys()
         {
-            return toys.ToList();
+            return toys?.ToList();
         }
 
         public List<Toy> GetToyByType(ToyTypes type)
@@ -154,7 +154,9 @@ interface IToys
         {
             if (toys != null&&!(toys.Any(t=>t.Name==toy.Name&&t.IsSecondHand==toy.IsSecondHand)))
             {
-                toys.Add(toy);
+            if (toy.Image == null)
+                toy.Image = "default_image.png";
+            toys.Add(toy);
                 return true;
             }
             return false;
