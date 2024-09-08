@@ -9,7 +9,7 @@ namespace MVVMSample
             InitializeComponent();
             //שינוי הצבעה ל 
             //SHELL
-            MainPage = new AddToyPage();
+            MainPage = new ViewToysPage();
         }
     }
 }
