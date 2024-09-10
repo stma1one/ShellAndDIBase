@@ -62,9 +62,11 @@
 	  <None Remove="Resources\Fonts\MaterialSymbolsOutlined.ttf" />
 	  <None Remove="Resources\Images\chuky.jpg" />
 	  <None Remove="Resources\Images\default_image.png" />
+	  <None Remove="Resources\Images\pen.png" />
 	  <None Remove="Resources\Images\puppet.jpeg" />
 	  <None Remove="Resources\Images\Puzzle.jpeg" />
 	  <None Remove="Resources\Images\ThinkGame.jpeg" />
+	  <None Remove="Resources\Images\toy.png" />
 	  <None Remove="Resources\Splash\train.svg" />
 	</ItemGroup>
 

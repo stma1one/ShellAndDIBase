@@ -1,4 +1,4 @@
-﻿using Android.Health.Connect;
+﻿
 using MVVMSample.Models;
 using MVVMSample.Services;
 using System;

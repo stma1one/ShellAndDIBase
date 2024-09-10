@@ -6,6 +6,7 @@
        Shell.FlyoutBehavior="Disabled"
        Title="MVVMSample">
 
+
     <ShellContent Title="Home"
                   ContentTemplate="{DataTemplate local:AddToyPage}"
                   Route="MainPage" />
