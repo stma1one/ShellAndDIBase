@@ -9,7 +9,11 @@ using System.Threading.Tasks;
 namespace MVVMSample.ViewModels
 {
     #region פרמטרים ממסכים אחרים
-   
+    //פרמטר ראשון - השם של התכונה במסך החדש
+    //פרמטר שני- שם של המפתח במילון או השם של הפרמטר במחרוזת 
+
+    [QueryProperty(nameof(SelectedToy),"Toy")]
+    [QueryProperty(nameof(Id),"id")]
     #endregion
     class ToyDetailsPageViewModel : ViewModelBase
     {
@@ -30,16 +34,19 @@ namespace MVVMSample.ViewModels
                 {
                     id = value;
                     OnPropertyChanged();
-                  
+
                     //Fetch the Toy by Id
-                   
+                    FetchToyById();
                 }
                
 
             }
         }
 
-        
+        private void FetchToyById()
+        {
+            SelectedToy = toyService?.GetToys()?.Where(t => t.Id == id).FirstOrDefault();
+        }
 
         public Toy? SelectedToy
         {

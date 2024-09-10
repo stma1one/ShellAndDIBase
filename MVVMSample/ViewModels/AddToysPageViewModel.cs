@@ -215,7 +215,7 @@ namespace MVVMSample.ViewModels
         #endregion
 
         //הוספת צעצוע חדש
-        private void AddnewToy(string name)
+        private async void AddnewToy(string name)
         {
             newToy = new Toy() { Id = 1, Name = this.Name, Price = this.Price, Type = SelectedType,    Image="default_image.png" };
             if (name == "הוסף צעצוע")
@@ -225,14 +225,21 @@ namespace MVVMSample.ViewModels
                 newToy.IsSecondHand = true;
                 newToy.Price = newToy.Price * 0.9;
             }
-            if (toyService.AddToy(newToy))
-                #region שדה 
-                Message = "הצלחה כבירה";
-            else
-                Message = "לא הצלחתי להוסיף צעצוע";
-            #endregion
+            //if (toyService.AddToy(newToy))
+            //    #region שדה 
+            //    Message = "הצלחה כבירה";
+            //else
+            //    Message = "לא הצלחתי להוסיף צעצוע";
+            //#endregion
 
+            bool res;
             #region הקפצת חלון
+            if (toyService.AddToy(newToy))
+                Shell.Current.DisplayAlert(title: "הוספת צעצוע הצליחה", message: "הצלחה כבירה", "אישור");
+            else
+              res= await Shell.Current.DisplayAlert(title: "הוספת צעצוע נכשלה?", message: "?לא הצלחתי להוסיף", "אישור","ביטול");
+            //ללא שימוש בSHELL
+           // App.Current.MainPage.DisplayAlert(title: "הוספת צעצוע נכשלה?", message: "?לא הצלחתי להוסיף", "אישור", "ביטול")
             #endregion
 
 

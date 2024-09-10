@@ -60,7 +60,11 @@
                      Grid.Row="3">
 
             <!--  CollectionView  -->
-            <CollectionView ItemsSource="{Binding Toys}">
+
+            <CollectionView SelectionMode="Single"
+                            SelectedItem="{Binding SelectedToy}"
+                            SelectionChangedCommand="{Binding ShowDetailsCommand}"
+                            ItemsSource="{Binding Toys}">
                 <!--  ItemsLayouts  -->
                 <!--
             <CollectionView.ItemsLayout>
@@ -68,6 +72,7 @@
             </CollectionView.ItemsLayout>
                 -->
                 <CollectionView.EmptyView>
+
                     <StackLayout>
                         <Image Source="dotnet_bot.png" />
                         <Label HorizontalTextAlignment="Center" Text="הכל טוב" />
@@ -79,7 +84,13 @@
                             <!--  SwipeView.TopItems,SwipeView.RightItems,SwipeView.BottomItems  -->
                             <SwipeView.LeftItems>
                                 <SwipeItems>
-                                      <!--Binding .   : means pass the whole object as parameter -->
+                                    <!--  Binding .   : means pass the whole object as parameter  -->
+                                    <!--
+                                        DeleteCommand belongs to the view model but in the collectioview
+                                        we are running under DataType=Toy so we need
+                                        to reference Source to find the BindingContext with the viewmodel
+                                        x:RelativeSource enables us to auto search the viewmodel in the visual tree
+                                    -->
                                     <SwipeItem Command="{Binding DeleteCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:ViewToysPageViewModel}, Mode=FindAncestorBindingContext}}"
                                                CommandParameter="{Binding .}"
                                                Text="מחק"
@@ -87,8 +98,10 @@
                                         <SwipeItem.IconImageSource>
                                             <FontImageSource FontFamily="MaterialSymbols" Glyph="{x:Static helpers:IconFont.Delete}" />
                                         </SwipeItem.IconImageSource>
-                                        
-                                        <!--הוספת כפתורי ניווט-->
+
+
+
+                                        <!--  הוספת כפתורי ניווט  -->
                                     </SwipeItem>
 
 

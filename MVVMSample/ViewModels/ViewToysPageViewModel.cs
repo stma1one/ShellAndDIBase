@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MVVMSample.ViewModels
 {
@@ -18,12 +19,35 @@ namespace MVVMSample.ViewModels
         private ToyService toyService;
         private List<Toy> fullList;
         private bool isRefreshing;
+        
+
 
         #region נבחר מהרשימה
+        private Toy selectedToy;
+        public Toy SelectedToy
+        {
+            get
+            {
+                return selectedToy;
+            }
+            set
+            {
+                if (selectedToy != value)
+                {
+                    selectedToy = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         #endregion
 
         #region בחירת אוסף פריטים מהרישמה
+       public ObservableCollection<object> SelectedToys
+        {
+            get; set;
+        }
+        
         #endregion
 
 
@@ -97,11 +121,15 @@ namespace MVVMSample.ViewModels
         }
 
         #region Navigation
+        public ICommand ShowDetailsCommand
+        {
+            get;private set;
+        }
         //Shell Navigation Pass Arguments
-       
+
 
         //Shell Navigation Pass Object
-       
+
         #endregion
 
         #endregion
@@ -127,9 +155,10 @@ namespace MVVMSample.ViewModels
 
             #region Navigation Commands
             //Navigation with Parametes
-            
+            // ShowDetailsCommand = new Command(async() => { await GotoWithArguments(); });
+
             //Navigation With Object
-            
+            ShowDetailsCommand = new Command(async() => { await GoToDetailsPage(); });
             #endregion
 
             #region Commands By LINQ
@@ -196,14 +225,30 @@ namespace MVVMSample.ViewModels
         }
         #region Navigation Methods
         //Navigation with Object
-        private void GoToDetailsPage(Toy toy)
+        private async Task GoToDetailsPage()
         {
+            if (SelectedToy == null)
+                return;
+            //האובייקטים שנרצה להעביר יישמרו במילון
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data.Add("Toy", SelectedToy);
+            //נשלח את המידע עם הפניה למסך
+            await Shell.Current.GoToAsync("/Details", data);
+            //נבטל את הבחירה בחזרה למסך הקודם
+            SelectedToy = null;
 
+           
         }
         //Navigation With Parameters
-        private void GotoWithArguments(Toy toy)
+        private async Task GotoWithArguments()
         {
+            if (SelectedToy != null)
+            {
+                await Shell.Current.GoToAsync($"/Details?id={SelectedToy.Id}");
 
+                SelectedToy = null;
+            }
+            
         }
         #endregion
 
